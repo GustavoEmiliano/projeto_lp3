@@ -11,7 +11,7 @@ O projeto consiste na implementação de um sistema backend utilizando o framewo
 
     Python: Linguagem de programação principal.
     Flask: Framework utilizado para desenvolvimento do backend.
-    Outras bibliotecas Python: Podem ser utilizadas para funcionalidades específicas, como SQLAlchemy para interação com banco de dados.
+    Outras bibliotecas Python: Podem ser utilizadas para funcionalidades específicas.
 
 # Estrutura do Projeto
 

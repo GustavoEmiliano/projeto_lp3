@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body{
+            text-align: center;
+            background-color: antiquewhite;
+        }
+    </style>
+    <title> {%block title %} {%endblock%}</title> <!--Aqui define onde as páginas filhas poderão alterar o conteúdo-->
+</head>
+<body>
+    <nav>
+        <a href="/">Home Page</a>
+        <a href="/contato">Contato</a>
+        <a href="/produto">Produtos</a>
+    </nav>
+
+    {% block content %} 
+    {%endblock%}
+
+    <br><br>
+    <hr style="margin: auto 150px">
+
+    {%block footer%} <!--Esse bloco já tem um conteúdo default, o que está dentro dele-->
+    <footer>
+        <p>Desenvolvido por Gabriel Luna E Gustavo Emiliano,  2024</p>
+        <a href="/ComoUsar">Como Usar</a>
+        <a href="/privacidade">Privacidade</a>
+        <a href="/termos">Termos</a>
+    </footer>
+    {%endblock%}
+
+</body>
+</html>

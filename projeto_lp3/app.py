@@ -1,65 +1,88 @@
-from flask import Flask
-from validate_docbr import CPF, CNPJ
+from flask import Flask, render_template
+from validate_docbr import CPF
+from validate_docbr import CNPJ
 
-cpf = CPF()
+
 cnpj = CNPJ()
-
+cpf = CPF()
 app = Flask("Minha App")
 
 # Uma página do flask é igual a: rota + função
-
+ 
 #/ home page - Home 
 @app.route("/")
 
 def home():
-    return "<h1> Home Page </h1>"
+    return render_template("home.html")
 
 #/ contato - página de contato
 @app.route("/contato")
 
 def contato():
-    return "<h1> Contato </h1>"
+    return render_template("contato.html")
 
 #/produtos - pagina produtos
-@app.route("/produtos")
+@app.route("/produto")
 
-def produto():
-    return "<h1> Produtos Legais</h1>"
+def produtos():
+    lista_produtos = [
+        {"nome" : "Coca-Cola", "descricao" : "Mata a sede", "url": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQm4S15squn95k7qtrVOpMX1MOJGe48y4B7FQ&s"},
+        {"nome" : "Doritos", "descricao" : "Suja a mão", "url": "https://atacadaobr.vtexassets.com/arquivos/ids/252509/g.jpg?v=638353972719200000"},
+        {"nome" : "Chocolate", "descricao" : "Bom", "url" : "https://www.havan.com.br/media/catalog/product/cache/73a52df140c4d19dbec2b6c485ea6a50/b/a/barra-de-chocolate-ao-leite-nestle_806102.jpg"},
+    ]
+    return render_template("produto.html", produtos = lista_produtos)
 
-# Abaixo está o exercicio sobre rotas, praticado em aula de reposição.
-
-# página/servicos retornar "Nossos Serviços"
-# pagina /gerar-cpf retornar Cpf Aleatorio
-# pagina /gerar-cnpj retornar Cnpj aleatório
-
-
-# /servicos - pagina serviços
-
+#/produtos - pagina servicos
 @app.route("/servicos")
+
 def servicos():
-    return "<h1> Nossos Serviços </h1>"
+    return render_template("servicos.html")
 
-
+#/produtos - pagina gerar-cpf
 @app.route("/gerar-cpf")
-def gerar_cpf():
-    return f"CPF: {cpf.generate(True)}"
 
+def gerarcpf():
+    # cpfs = []
+    # for i in range(10):
+    #     cpfs.append(cpf.generate(True))
+    
+        
+    return render_template("cpf.html", gerarcpf = cpf.generate_list(n=20))
 @app.route("/gerar-cnpj")
-def gerar_cnpj():
-    return f"CNPJ: {cnpj.generate(True)}"
 
-@app.route("/gerar-5-cpfs")
-def gerar_5_cpfs():
-    cpfs = []
-    for i in range(5):
-        cpfs.append(cpf.generate(True))
-    return  f'CPFS: {cpfs} '
+def gerarcnpj():
+    cnpjs = []   
 
-@app.route("/gerar-5-cnpjs")
-def gerar_5_cnpjs():
-    cnpjs = []
-    for i in range(5):
-        cnpjs.append(cnpj.generate(True))
-    return  f'CNPJS: {cnpjs} '
+    for i in range(10):
+        cnpjs.append(cpf.generate(True))
+        
+    return render_template("cnpj.html", gerarcnpj = cnpjs)
+
+@app.route("/enviado")
+
+def Enviado():
+    return render_template("enviado.html")
+
+@app.route("/ComoUsar")
+
+def ComoUsar():
+    return render_template("ComoUsar.html")
+    
+
+@app.route("/Privacidade")
+
+def Privacidade():
+    return render_template("privacidade.html")
+
+@app.route("/Termos")
+
+def Termos():
+    return render_template("termos.html")
+    
+
+#pagina/ servicos retornar "Nosso serviços"
+#pagina/ gerar-cpf retornar cpf aleatorio
+#pagina/ gerar-cnpj retornar cnpj aleatorio
+
 
 app.run(debug=True)

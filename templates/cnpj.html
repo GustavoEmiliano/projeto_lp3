@@ -1,0 +1,14 @@
+{%extends "base.html"%} <!--Aqui[] página filha de base.html-->
+
+
+
+{%block title %} Lista de CNPJ's {%endblock%}
+    
+
+{% block content %}
+    <h1>CNPJ's: </h1>
+
+    {% for cnpj in gerarcnpj %}
+    <h2>{{cnpj}}</h2>
+    {% endfor %}
+{%endblock%}

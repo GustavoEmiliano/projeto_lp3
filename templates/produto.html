@@ -1,0 +1,25 @@
+{%extends "base.html"%} <!--Aqui[] página filha de base.html-->
+
+
+
+{%block title %} Contato {%endblock%}
+    
+
+{% block content %}
+<h1>Nossos Produtos</h1>
+<p>Confira nossos produtos mais novos!</p>
+
+{% for produto in produtos %}
+<img style="height: 200px; width: 200px;" src="{{produto.url}}" alt="nada">
+<h2>{{produto.nome}}</h2>
+<p>{{ produto.descricao}}</p>
+{% endfor %}
+    {%endblock%}
+
+
+
+
+
+
+
+    

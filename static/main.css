@@ -1,0 +1,12 @@
+body{
+    text-align: center;
+    background-color: antiquewhite;
+}
+label, input, textarea, button{
+    display: block;
+    margin: auto;         
+} 
+.form-control{
+    margin-bottom: 7px;
+}
+        
